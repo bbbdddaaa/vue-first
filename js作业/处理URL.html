@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        function fn(myUrl){
-            const a = [1]
-            const boss = a.reduce((res)=>{
-               const a =  myUrl.split('?')[1].split('#')[0].replace(/=/g,':').split('&')
-               a.forEach((item) => {
-                let [key,val] = item.split(':')
+        function fn(myUrl) {
+            const a = myUrl.split('?')[1].split('#')[0].split('&')
+            const boss = a.reduce((res, item) => {
+                let [key, val] = item.split('=')
                 res[key] = val
-                
-               });
-               return res
-            },{})
+                return res
+            },{});
             return boss
         }
         console.log(fn('http://www.baidu.com/?name=zhangsan&age=18&sex=nan#'));
-        
+
     </script>
 </body>
+
 </html>
